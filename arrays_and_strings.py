@@ -125,7 +125,7 @@ def is_palindrome_perm(s):
     return True
 
 
-# 1.5 One Away
+### 1.5 One Away
 # There are three types of edits that can be performed on strings: insert a 
 # character, remove a character, or replace a character. Given two strings,
 # write a function to check if they are one edit (or zero edits) away.
@@ -166,6 +166,40 @@ def one_away(s1, s2):
     if diff_ctr <= 1:
         return True
     return False
+
+
+### 1.6 String Compression
+# Basic string compression - "aabcccccaaa" -> "a2b1c5a3"
+
+def compress_string(s):
+# Create a variable to find out if dups touching, set to False
+# If False at the end, return original string, otherwise, newly created string
+# Create a new empty string, comp
+# ctr = 1
+# Loop through given string, s, in range length minus 1
+# if curr is equal to next, incr ctr by 1
+# if not, add curr to empty string, plus ctr
+# set ctr to 1
+
+    dups = False # T
+    comp = "" # "a2b1"
+    ctr = 1 # 3
+    # aabccc"
+
+    for i in range(len(s)-1): # 4 - 4
+        if s[i] == s[i+1]: # 
+            ctr += 1
+            if ctr >= 2:
+                dups = True
+        else:
+            comp += f"{s[i]}{ctr}"
+            ctr = 1
+    if ctr > 1:
+        comp += f"{s[-1]}{ctr}"
+
+    if dups:
+        return comp
+    return s
 
         
 

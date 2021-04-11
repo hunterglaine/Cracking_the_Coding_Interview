@@ -34,5 +34,10 @@ class MyAppUnitTestCase(unittest.TestCase):
         self.assertFalse(arrays_and_strings.one_away("pale","bake"))
         self.assertFalse(arrays_and_strings.one_away("park","parker"))
 
+    def test_compress_string(self):
+        self.assertEqual(arrays_and_strings.compress_string("aabcccccaaa"), "a2b1c5a3")
+        self.assertEqual(arrays_and_strings.compress_string("abc"), "abc") 
+        self.assertEqual(arrays_and_strings.compress_string("aAAAaaabBBcc"), "a1A3a3b1B2c2") 
+
 if __name__ == "__main__":
     unittest.main()
