@@ -125,4 +125,49 @@ def is_palindrome_perm(s):
     return True
 
 
+# 1.5 One Away
+# There are three types of edits that can be performed on strings: insert a 
+# character, remove a character, or replace a character. Given two strings,
+# write a function to check if they are one edit (or zero edits) away.
+
+# Checking to see if the two strings are the same or only one edit away
+
+def one_away(s1, s2):
+    """Return whether two strings are the same or only one edit away"""
+    # If the two strings are the same, return True
+    if s1 == s2:
+        return True
+
+    # If one is longer, go through that string and put it in dict with freq ctr
+    # Loop through the second string, look to see if the letter is in the dict
+    # If not, up diff_ctr by 1
+    # If so, decrement the ctr
+    # If it's 0, remove the key
+    # After that loop, if the dict still exists, if only one letter and they're 
+
+    dic = {}
+    diff_ctr = 0
+
+    for char in s1:
+        dic[char] = dic.get(char, 0) + 1
+    
+    for char2 in s2:
+        dic[char2] = dic.get(char2, 0) - 1
+        if dic[char2] <= 0:
+            if dic[char2] == -1:
+                diff_ctr += 1
+            del dic[char2]
+    
+    if len(dic) == 1 and (diff_ctr == 1 or diff_ctr == 0):
+        return True
+    if len(dic) > 1:
+        return False
+    
+    if diff_ctr <= 1:
+        return True
+    return False
+
+        
+
+
 

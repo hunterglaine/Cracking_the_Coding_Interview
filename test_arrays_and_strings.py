@@ -26,5 +26,13 @@ class MyAppUnitTestCase(unittest.TestCase):
         self.assertTrue(arrays_and_strings.is_palindrome_perm("Taco Coa"))
         self.assertFalse(arrays_and_strings.is_palindrome_perm("Taco Coaa"))
 
+
+    def test_one_away(self):
+        self.assertTrue(arrays_and_strings.one_away("pale","ple"))
+        self.assertTrue(arrays_and_strings.one_away("pales","pale"))
+        self.assertTrue(arrays_and_strings.one_away("pale","bale"))
+        self.assertFalse(arrays_and_strings.one_away("pale","bake"))
+        self.assertFalse(arrays_and_strings.one_away("park","parker"))
+
 if __name__ == "__main__":
     unittest.main()
