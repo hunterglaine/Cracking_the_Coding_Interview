@@ -39,5 +39,8 @@ class MyAppUnitTestCase(unittest.TestCase):
         self.assertEqual(arrays_and_strings.compress_string("abc"), "abc") 
         self.assertEqual(arrays_and_strings.compress_string("aAAAaaabBBcc"), "a1A3a3b1B2c2") 
 
+    def test_rotate_matrix(self):
+        self.assertEqual(arrays_and_strings.rotate_matrix([[1,2],[3,4]]), [[3,1],[4,2]])
+
 if __name__ == "__main__":
     unittest.main()
