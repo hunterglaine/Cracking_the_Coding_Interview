@@ -209,8 +209,8 @@ def rotate_matrix(matrix):
     
     n = len(matrix[0]) # 2
 
-    for x in range(n-1): # 0
-        for y in range(n-2) if n > 2 else range(1): 
+    for x in range(n//2 + n%2): # 0
+        for y in range(n//2): 
             tmp = matrix[n-y-1][x]
             matrix[n-y-1][x] = matrix[n-x-1][n-y-1]
             matrix[n-x-1][n-y-1] = matrix[y][n-x-1]
