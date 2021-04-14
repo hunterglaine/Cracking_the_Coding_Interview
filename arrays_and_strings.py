@@ -204,9 +204,19 @@ def compress_string(s):
 
 ### 1.7 Rotate Matrix
 # Given an N x N matrix, rotate in place by 90 degrees.
+# [1,2][3,4]
+def rotate_matrix(matrix):
+    
+    n = len(matrix[0]) # 2
 
-def rotate_matrix(n):
-    pass
+    for x in range(n-1): # 0
+        for y in range(n-2) if n > 2 else range(1): 
+            tmp = matrix[n-y-1][x]
+            matrix[n-y-1][x] = matrix[n-x-1][n-y-1]
+            matrix[n-x-1][n-y-1] = matrix[y][n-x-1]
+            matrix[y][n-x-1] = matrix[x][y]
+            matrix[x][y] = tmp
+    return matrix
 
 
         
