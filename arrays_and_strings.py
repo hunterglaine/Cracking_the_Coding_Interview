@@ -219,6 +219,18 @@ def rotate_matrix(matrix):
     return matrix
 
 
+### 1.8 Zero Matrix
+# Write an algortihm such that if an element in an M x N matrix is 0, its entire row
+# and column are set to 0
+
+def turn_to_zeros(matrix):
+    """Turn given m x n matrix row and column to 0 if zero exists"""
+
+    # Loop through horizontally
+    # Loop through vertically
+    # If element equals 0, 
+
+
         
 
 

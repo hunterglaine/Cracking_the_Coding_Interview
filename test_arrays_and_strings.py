@@ -45,5 +45,12 @@ class MyAppUnitTestCase(unittest.TestCase):
         self.assertEqual(arrays_and_strings.rotate_matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]), [[13,9,5,1],[14,10,6,2],[15,11,7,3],[16,12,8,4]])
 
 
+    def test_turn_to_zeros(self):
+        self.assertEqual(arrays_and_strings.turn_to_zeros([[0,2],[3,4]]), [[0,0],[0,4]])
+        self.assertEqual(arrays_and_strings.turn_to_zeros([[1,0,3],[4,5,6],[7,8,9]]), [[0,0,0],[4,0,6],[7,0,9]])
+        self.assertEqual(arrays_and_strings.turn_to_zeros([[1,2,3,0],[5,6,7,8],[9,10,11,12],[13,14,15,16]]), [[0,0,0,0],[5,6,7,0],[9,10,11,0],[13,14,15,0]])
+        self.assertEqual(arrays_and_strings.turn_to_zeros([[1,2],[3,4]]), [[1,2],[3,4]])
+
+
 if __name__ == "__main__":
     unittest.main()
