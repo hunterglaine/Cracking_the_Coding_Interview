@@ -229,6 +229,10 @@ def turn_to_zeros(matrix):
     # Loop through horizontally
     # Loop through vertically
     # If element equals 0, 
+    # Add its x to a list
+    # Add its y to a list
+
+    #  
 
 
         
