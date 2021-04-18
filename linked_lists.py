@@ -41,3 +41,9 @@ def remove_dups(head):
     return head
 
 
+### 2.2 Return Kth to Last
+# Implement an algorithm to find the Kth to laast element of a singly linked list.
+
+
+
+
