@@ -23,7 +23,8 @@ class MinStack:
     def pop(self):
 
         if self.stack:
-            gone = self.stack.pop()
+            self.stack.pop()
+            # gone = self.stack.pop()
             # if gone == self.min:
 
         

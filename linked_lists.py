@@ -44,6 +44,19 @@ def remove_dups(head):
 ### 2.2 Return Kth to Last
 # Implement an algorithm to find the Kth to laast element of a singly linked list.
 
+### 2.3 Delete Middle Node
+# Given a node, delete that node. Alter the list in place and return nothing. 
+
+def delete_middle(node):
+    curr = node
+    nxt = node.next
+
+    while nxt:
+        curr.val = nxt.val
+        if not nxt.next:
+            curr.next = None
+        curr = nxt
+        nxt = nxt.next
 
 
 
