@@ -60,3 +60,35 @@ class StackOfStacks:
                 self.stacks.pop()
             return popped
 
+
+### 3.4 Queue via Stacks
+# Implement a MyQueue class which implements a queue using two stacks.
+
+# queue should have pop from front, push to end, peek at first item, 
+class MyQueue:
+    def __init__(self):
+        self.pop_peek_lst = []
+        self.push_lst = []
+
+    def push(self, value):
+        self.push_lst.append(value)
+    
+    def pop(self):
+        if not self.pop_peek_lst:
+            if self.push_lst:
+                self.push_lst.reverse()
+                self.pop_peek_lst = self.push_lst
+                self.push_lst = []
+            else:
+                return
+        return self.pop_peek_lst.pop()
+
+    def peek(self):
+        if not self.pop_peek_lst:
+            if self.push_lst:
+                return self.push_lst[0]
+            else:
+                return
+        else:
+            return self.pop_peek_lst[-1]
+
