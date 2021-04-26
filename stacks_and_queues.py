@@ -92,3 +92,8 @@ class MyQueue:
         else:
             return self.pop_peek_lst[-1]
 
+    def is_empty(self):
+        if not self.pop_peek_lst and not self.push_lst:
+            return True
+        return False
+
