@@ -229,10 +229,23 @@ def turn_to_zeros(matrix):
     # Loop through horizontally
     # Loop through vertically
     # If element equals 0, 
-    # Add its x to a list
-    # Add its y to a list
+    # Add its x to a set
+    # Add its y to a set
+    x_set = set()
+    y_set = set()
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])): 
+            if matrix[i][j] == 0:
+                x_set.add(i)
+                y_set.add(j)
 
-    #  
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            if i in x_set and matrix[i][j] != 0:
+                matrix[i][j] = 0
+            if j in y_set and matrix[i][j] != 0:
+                matrix[i][j] = 0
+
 
 
         
