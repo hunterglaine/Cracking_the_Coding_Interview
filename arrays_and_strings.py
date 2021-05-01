@@ -247,8 +247,15 @@ def turn_to_zeros(matrix):
                 matrix[i][j] = 0
 
 
+### 1.9 String Rotation
+# You have a method, isSubstring to check if one word is a substring of another. 
+# Given two string, s1 and s2, write code to check if s2 is a rotation of s1 using 
+# only on call to isSubstring.
+def isSubstring(string_1, string_2):
+    pass
 
-        
-
-
-
+def is_rotated(s1,s2):
+    if len(s1) == len(s2) and len(s1) > 0:
+        s1s1 = s1 + s1
+        return isSubstring(s1s1,s2)
+    return False
