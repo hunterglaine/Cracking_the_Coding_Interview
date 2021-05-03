@@ -59,4 +59,34 @@ def delete_middle(node):
         nxt = nxt.next
 
 
+### 2.5 Sum List
+
+# Loop through each linked list (function?)
+        # Add the string of each value to a string
+        # Add the two ints of those strings
+        # Loop through that string
+        # Create a new node for each number in the string, starting with first (which points to none)
+        # point each succesive num at the previously created node
+        # Return the last node created
+        def traverse_ll(node):
+            ll_str = ""
+            while node:
+                ll_str += str(node.val)
+                node = node.next
+                
+            ll_list = list(ll_str)
+            ll_list.reverse()
+            return "".join(ll_list)
+        
+        num_1 = traverse_ll(l1)
+        num_2 = traverse_ll(l2)
+        
+        result_num = str(int(num_1) + int(num_2))
+        next = None
+        for num in result_num:
+            new_node = ListNode(int(num), next)
+            next = new_node
+        return new_node
+
+
 
