@@ -89,4 +89,32 @@ def delete_middle(node):
         return new_node
 
 
+### Reverse Linked List
+
+def reverseList(self, head: ListNode) -> ListNode:
+        
+    # set prev to None
+    # set h to head
+    # while h does not equal None
+    #   set node to h
+    #   set h to h.next
+    #   if h is not None
+    #       set head to h
+    #   set node.next to prev
+    #   set prev to node
+    # return head
+
+    prev = None
+    h = head
+
+    while h != None:
+        node = h
+        h = h.next
+        if h != None:
+            head = h
+        node.next = prev
+        prev = node
+    return head
+
+
 
