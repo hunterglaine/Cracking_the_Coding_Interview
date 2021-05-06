@@ -259,3 +259,27 @@ def is_rotated(s1,s2):
         s1s1 = s1 + s1
         return isSubstring(s1s1,s2)
     return False
+
+
+### Make Valid Parentheses
+
+def minAddToMakeValid(s):
+    # Loop through the given string
+    # If the character is "(", add it to list, opens
+    # If the character is ")", pop from the opens list
+    # If there is no "(" to pop, add to the ctr
+    # At the end, add the length of opens to the ctr
+    
+    ctr = 0
+    opens = []
+    
+    for char in s:
+        if char == "(":
+            opens.append("(")
+        if char == ")":
+            if opens:
+                opens.pop()
+            else:
+                ctr += 1
+    ctr += len(opens)
+    return ctr
