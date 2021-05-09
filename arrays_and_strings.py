@@ -283,3 +283,20 @@ def minAddToMakeValid(s):
                 ctr += 1
     ctr += len(opens)
     return ctr
+
+
+### First Missing Positive
+# Given an unsorted integer array nums, find the smallest missing positive integer.
+
+def firstMissingPositive(nums):
+        
+        pos = 1
+        seen = set()
+        
+        for num in nums:
+            seen.add(num)
+            if num == pos:
+                pos += 1
+            while pos in seen:
+                pos += 1
+        return pos
