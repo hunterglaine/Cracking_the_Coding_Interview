@@ -300,3 +300,29 @@ def firstMissingPositive(nums):
             while pos in seen:
                 pos += 1
         return pos
+
+### Remove Duplicates from Sorted Array
+def removeDuplicates(self, nums: List[int]) -> int:
+        
+    # [] - > 0
+    # [1] -> 1
+    # [1,2,3,4] -> 4
+    # [1,1,1,1] -> 1
+    
+    # Loop through range of length of nums minus 1
+    # If the number at i and i+1 are the same 
+    # Remove the number at i and subtract 1 from i
+    # Increment i
+    # Check if last item == 2nd to last item, if so delete it
+    # return length of list
+    i = 0
+    while i < len(nums) - 1:
+        if nums[i] == nums[i+1]:
+            del nums[i]
+            i -= 1
+        i += 1
+    if len(nums) > 1:
+        if nums[-2] == nums[-1]:
+            del nums[-1]
+        
+    return len(nums)
