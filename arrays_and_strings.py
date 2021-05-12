@@ -326,3 +326,21 @@ def removeDuplicates(self, nums: List[int]) -> int:
             del nums[-1]
         
     return len(nums)
+
+
+### Intersection of Two Arrays
+def intersect(nums1, nums2):
+    nums1_dict = {}
+    result = []
+    
+    for num in nums1:
+        nums1_dict[num] = nums1_dict.get(num, 0) + 1
+    
+    for int in nums2:
+        if int in nums1_dict:
+            result.append(int)
+            nums1_dict[int] -= 1
+            if nums1_dict[int] == 0:
+                del nums1_dict[int]
+            
+    return result
