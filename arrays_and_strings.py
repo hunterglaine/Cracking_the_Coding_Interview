@@ -263,7 +263,7 @@ def is_rotated(s1,s2):
 
 ### Make Valid Parentheses
 
-def minAddToMakeValid(s):
+def min_add_to_make_valid(s):
     # Loop through the given string
     # If the character is "(", add it to list, opens
     # If the character is ")", pop from the opens list
@@ -288,7 +288,7 @@ def minAddToMakeValid(s):
 ### First Missing Positive
 # Given an unsorted integer array nums, find the smallest missing positive integer.
 
-def firstMissingPositive(nums):
+def first_missing_positive(nums):
         
         pos = 1
         seen = set()
@@ -302,7 +302,7 @@ def firstMissingPositive(nums):
         return pos
 
 ### Remove Duplicates from Sorted Array
-def removeDuplicates(self, nums: List[int]) -> int:
+def remove_duplicates(self, nums: List[int]) -> int:
         
     # [] - > 0
     # [1] -> 1
@@ -344,3 +344,49 @@ def intersect(nums1, nums2):
                 del nums1_dict[int]
             
     return result
+
+
+### Next Greater Element
+def next_greater_element(n):
+        
+    # Next largest with same digits
+    # If none, return -1
+    
+    # Turn int into a string
+    # Loop through starting at the end
+    # Find the first occurence where the number to the left is less than the number to its immediate right
+    # Store that value as swap_1
+    # Look at every value from swap_1 index to the end of the list, find the smallest value that is greater than swap_1
+    # Swap that with swap_1
+    # Sort the list from swap_1's index + 1 up to and including to the other swap point
+    # Return integer of that string
+    
+    n = list(str(n))
+    swap_1 = None
+    
+    for i in range(len(n) - 1, 0, -1):
+        if int(n[i]) > int(n[i-1]):
+            swap_1 = i - 1
+            break
+    else:
+        return -1
+
+    swap_2 = None
+    for j in range(swap_1 + 1, len(n)):
+        if not swap_2: 
+            if int(n[swap_1]) < int(n[j]):
+                swap_2 = j
+        elif int(n[swap_1]) < int(n[j]) < int(n[swap_2]):
+            swap_2 = j
+    if swap_2:
+        n[swap_1], n[swap_2] = n[swap_2], n[swap_1]
+    else: 
+        return -1
+    
+    end = n[swap_1+1:] 
+    end.sort()
+    result = n[:swap_1+1] + end 
+    
+    if int("".join(result)) <= 2147483647:
+        return int("".join(result))
+    return -1
