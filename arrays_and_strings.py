@@ -229,13 +229,164 @@ def turn_to_zeros(matrix):
     # Loop through horizontally
     # Loop through vertically
     # If element equals 0, 
-    # Add its x to a list
-    # Add its y to a list
+    # Add its x to a set
+    # Add its y to a set
+    x_set = set()
+    y_set = set()
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])): 
+            if matrix[i][j] == 0:
+                x_set.add(i)
+                y_set.add(j)
 
-    #  
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            if i in x_set and matrix[i][j] != 0:
+                matrix[i][j] = 0
+            if j in y_set and matrix[i][j] != 0:
+                matrix[i][j] = 0
 
 
+### 1.9 String Rotation
+# You have a method, isSubstring to check if one word is a substring of another. 
+# Given two string, s1 and s2, write code to check if s2 is a rotation of s1 using 
+# only on call to isSubstring.
+def isSubstring(string_1, string_2):
+    pass
+
+def is_rotated(s1,s2):
+    if len(s1) == len(s2) and len(s1) > 0:
+        s1s1 = s1 + s1
+        return isSubstring(s1s1,s2)
+    return False
+
+
+### Make Valid Parentheses
+
+def min_add_to_make_valid(s):
+    # Loop through the given string
+    # If the character is "(", add it to list, opens
+    # If the character is ")", pop from the opens list
+    # If there is no "(" to pop, add to the ctr
+    # At the end, add the length of opens to the ctr
+    
+    ctr = 0
+    opens = []
+    
+    for char in s:
+        if char == "(":
+            opens.append("(")
+        if char == ")":
+            if opens:
+                opens.pop()
+            else:
+                ctr += 1
+    ctr += len(opens)
+    return ctr
+
+
+### First Missing Positive
+# Given an unsorted integer array nums, find the smallest missing positive integer.
+
+def first_missing_positive(nums):
         
+        pos = 1
+        seen = set()
+        
+        for num in nums:
+            seen.add(num)
+            if num == pos:
+                pos += 1
+            while pos in seen:
+                pos += 1
+        return pos
+
+### Remove Duplicates from Sorted Array
+def remove_duplicates(self, nums: List[int]) -> int:
+        
+    # [] - > 0
+    # [1] -> 1
+    # [1,2,3,4] -> 4
+    # [1,1,1,1] -> 1
+    
+    # Loop through range of length of nums minus 1
+    # If the number at i and i+1 are the same 
+    # Remove the number at i and subtract 1 from i
+    # Increment i
+    # Check if last item == 2nd to last item, if so delete it
+    # return length of list
+    i = 0
+    while i < len(nums) - 1:
+        if nums[i] == nums[i+1]:
+            del nums[i]
+            i -= 1
+        i += 1
+    if len(nums) > 1:
+        if nums[-2] == nums[-1]:
+            del nums[-1]
+        
+    return len(nums)
 
 
+### Intersection of Two Arrays
+def intersect(nums1, nums2):
+    nums1_dict = {}
+    result = []
+    
+    for num in nums1:
+        nums1_dict[num] = nums1_dict.get(num, 0) + 1
+    
+    for int in nums2:
+        if int in nums1_dict:
+            result.append(int)
+            nums1_dict[int] -= 1
+            if nums1_dict[int] == 0:
+                del nums1_dict[int]
+            
+    return result
 
+
+### Next Greater Element
+def next_greater_element(n):
+        
+    # Next largest with same digits
+    # If none, return -1
+    
+    # Turn int into a string
+    # Loop through starting at the end
+    # Find the first occurence where the number to the left is less than the number to its immediate right
+    # Store that value as swap_1
+    # Look at every value from swap_1 index to the end of the list, find the smallest value that is greater than swap_1
+    # Swap that with swap_1
+    # Sort the list from swap_1's index + 1 up to and including to the other swap point
+    # Return integer of that string
+    
+    n = list(str(n))
+    swap_1 = None
+    
+    for i in range(len(n) - 1, 0, -1):
+        if int(n[i]) > int(n[i-1]):
+            swap_1 = i - 1
+            break
+    else:
+        return -1
+
+    swap_2 = None
+    for j in range(swap_1 + 1, len(n)):
+        if not swap_2: 
+            if int(n[swap_1]) < int(n[j]):
+                swap_2 = j
+        elif int(n[swap_1]) < int(n[j]) < int(n[swap_2]):
+            swap_2 = j
+    if swap_2:
+        n[swap_1], n[swap_2] = n[swap_2], n[swap_1]
+    else: 
+        return -1
+    
+    end = n[swap_1+1:] 
+    end.sort()
+    result = n[:swap_1+1] + end 
+    
+    if int("".join(result)) <= 2147483647:
+        return int("".join(result))
+    return -1
